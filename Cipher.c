@@ -16,9 +16,10 @@ int main()
     printf ("1 will encode with rotation\n2 will decode with rotation\n");
     printf ("3 will encode with substitution\n4 will decode with substitution\n");
     scanf ("%d", &type); //determine the process
-    while (y=0){
-    switch (type){
-        case 1:{ //encoding by rotation
+    printf("Type: %d\n", type);
+    
+    switch(type) {
+        case 1 : //encoding by rotation
             printf ("please enter a key to rotate by\n");
             scanf("%d", &key); //number to rotate by
             printf ("please enter your message\n");
@@ -43,8 +44,8 @@ int main()
             printf("%s\n", message); //print the encoded message
             i=0; //resets the value of i to be used again
             break;
-        }
-        case 2:{ //decoding by rotation
+        
+        case 2 : //decoding by rotation
             printf ("please enter a key to rotate by\n");
             scanf("%d", &key); //key to rotate back by
             printf ("please enter your message\n");
@@ -74,8 +75,8 @@ int main()
             printf("%s\n", message); //print decoded message
             i=0; //resets the value of i to be used again
             break;
-        }
-        case 3:{ //encoding by substitution
+        
+        case 3 : //encoding by substitution
             printf ("please enter a key to rotate by\n");
             printf ("make sure to include every single letter\n");
             scanf("%s", Ckey); //string of alphabetic letters
@@ -100,8 +101,8 @@ int main()
             printf("%s\n", message); //print encoded message
             i=0; //resets the value of i to be used again
             break;
-        }
-        case 4:{ //decoding by substition
+        
+        case 4 : //decoding by substition
             printf ("please enter a key to rotate by\n");
             printf ("make sure to include every single letter\n");
             scanf("%s", Ckey); //string of alphabetic letters
@@ -115,15 +116,15 @@ int main()
                 chV = message[i]; //take character value from the characters string position
                 if ((chV >= 97) && (chV <= 122)){ //character value between 'a' and 'z'
                     kV=Ckey[x]; // takes the character value of the key
-                if (x>0){ //setting value x to 0
-                    x=0;
-                }
-                while (chV != kV){ //compareing the chracter value for the message to the keys character value
-                    x++; //move up the key series
-                    kV=Ckey[x];
-                }
-                chV=ABC[x]; //the position within the key is found and can be substituted into the alphabet (key[10] ABC[10]; key[23] ABC[23])
-                x=0; //make x zero for next cycle
+                    if (x>0){ //setting value x to 0
+                        x=0;
+                    }
+                    while (chV != kV){ //compareing the chracter value for the message to the keys character value
+                        x++; //move up the key series
+                        kV=Ckey[x];
+                    }
+                    chV=ABC[x]; //the position within the key is found and can be substituted into the alphabet (key[10] ABC[10]; key[23] ABC[23])
+                    x=0; //make x zero for next cycle
                 }
     
             message[i] = chV; //sub in character value taken from the alphabet
@@ -132,16 +133,12 @@ int main()
             printf("%s\n", message); //print decoded message
             i=0; //resets the value of i to be used again
             break;
-        }
+        
         default:{ //did not insert a number which could be used
             printf ("please enter a number, 1, 2, 3, or 4\n");
         }
     }
-    printf ("are you finished with the program?\n");
-    printf("if you are not finished press 0, if you are finished press any other number\n");
-    scanf ("%d", &y); //give the user a choice if they are finished with the program
-    
-    }
+    printf ("thank you for using this program\n"); //programs goodbye message
     return 0;
 }
 
