@@ -1,0 +1,101 @@
+#include <Servo.h>
+
+int a = 0;
+
+int target_number = 0;
+
+int target_hit = 0;
+
+int drop_distance = 0;
+
+int Angle = 0;
+
+int Angle_count = 0;
+
+int loop2 = 0;
+
+long readUltrasonicDistance(int triggerPin, int echoPin)
+{
+  pinMode(triggerPin, OUTPUT);  // Clear the trigger
+  digitalWrite(triggerPin, LOW);
+  delayMicroseconds(2);
+  // Sets the trigger pin to HIGH state for 10 microseconds
+  digitalWrite(triggerPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(triggerPin, LOW);
+  pinMode(echoPin, INPUT);
+  // Reads the echo pin, and returns the sound wave travel time in microseconds
+  return pulseIn(echoPin, HIGH);
+}
+
+Servo servo_0;
+
+void setup()
+{
+  servo_0.attach(0);
+
+  pinMode(0, OUTPUT);
+}
+
+void loop()
+{
+  target number = 0;
+  target hit = 0;
+  a = 0.01723 * readUltrasonicDistance(0, 0);
+  drop distance = 100;
+  Angle = 60;
+  Angle count = 1;
+  loop = 1;
+  while (target hit != target number) {
+    if (loop == 1 && a <= drop distance) {
+      servo_0.write((Angle count * Angle));
+      target hit += 1;
+      Angle count += 1;
+      a += 1;
+    }
+    // switch case for movement
+    if (target hit == 0) {
+      // move to first tower
+      digitalWrite(0, HIGH);
+      digitalWrite(0, HIGH);
+    }
+    if (target hit == 1) {
+      // move from first to second tower
+      digitalWrite(0, HIGH);
+      digitalWrite(0, HIGH);
+    }
+    if (target hit == 2) {
+      // move from second to third tower
+      digitalWrite(0, HIGH);
+      digitalWrite(0, HIGH);
+    }
+    if (target hit == 3) {
+      // move from third to fourth tower
+      digitalWrite(0, HIGH);
+      digitalWrite(0, HIGH);
+    }
+    loop = 0;
+  }
+  // switch case for return
+  if (target number < 1) {
+    // move backwards
+    digitalWrite(0, HIGH);
+    digitalWrite(0, HIGH);
+  }
+  if (target number < 2) {
+    // turn and move to end
+    digitalWrite(0, HIGH);
+    digitalWrite(0, HIGH);
+  }
+  if (target number < 3) {
+    // turn and move to end
+    digitalWrite(0, HIGH);
+    digitalWrite(0, HIGH);
+  }
+  if (target number < 4) {
+    digitalWrite(0, HIGH);
+    digitalWrite(0, HIGH);
+    // turn and move to end
+  }
+  delay(10); // Delay a little bit to improve simulation performance
+}
