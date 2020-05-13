@@ -51,7 +51,7 @@ void loop()
       servo_0.write((Angle count * Angle));
       target hit += 1;
       Angle count += 1;
-      a += 1;
+      loop += 1;
     }
     // switch case for movement
     if (target hit == 0) {
@@ -74,7 +74,7 @@ void loop()
       digitalWrite(0, HIGH);
       digitalWrite(0, HIGH);
     }
-    loop = 0;
+    loop = 1;
   }
   // switch case for return
   if (target number < 1) {
